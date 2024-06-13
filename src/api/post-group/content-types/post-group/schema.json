@@ -1,34 +1,102 @@
 {
-  "kind": "collectionType",
   "collectionName": "post_groups",
-  "info": {
-    "singularName": "post-group",
-    "pluralName": "post-groups",
-    "displayName": "Post Group",
-    "description": ""
+  "info":
+  {
+      "singularName": "post-group",
+      "pluralName": "post-groups",
+      "displayName": "Post Group",
+      "description": ""
   },
-  "options": {
-    "draftAndPublish": true
+  "options":
+  {
+      "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
-  "attributes": {
-    "title": {
-      "pluginOptions": {
-        "i18n": {
+  "pluginOptions":
+  {
+      "i18n":
+      {
           "localized": true
-        }
+      }
+  },
+  "attributes":
+  {
+      "title":
+      {
+          "pluginOptions":
+          {
+              "i18n":
+              {
+                  "localized": true
+              }
+          },
+          "type": "string",
+          "required": true
       },
-      "type": "string",
-      "required": true
-    },
-    "posts": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::post.post"
-    }
-  }
+      "posts":
+      {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::post.post"
+      },
+      "createdAt":
+      {
+          "type": "datetime"
+      },
+      "updatedAt":
+      {
+          "type": "datetime"
+      },
+      "publishedAt":
+      {
+          "type": "datetime",
+          "configurable": false,
+          "writable": true,
+          "visible": false
+      },
+      "createdBy":
+      {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+      },
+      "updatedBy":
+      {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+      },
+      "localizations":
+      {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::post-group.post-group"
+      },
+      "locale":
+      {
+          "writable": true,
+          "private": false,
+          "configurable": false,
+          "visible": false,
+          "type": "string"
+      }
+  },
+  "kind": "collectionType",
+  "modelType": "contentType",
+  "modelName": "post-group",
+  "uid": "api::post-group.post-group",
+  "globalId": "PostGroup"
 }
